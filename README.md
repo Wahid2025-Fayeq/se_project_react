@@ -9,74 +9,42 @@ Currently, two official plugins are available:
 Project Description
 
 The Weather Wear App is a responsive web application that:
-
-Fetches real-time weather data from the OpenWeather API
-
-Displays the current temperature and weather conditions
-
-Suggests clothing items based on the current weather
-
-Allows users to add new clothing items
-
-Opens and closes modals for adding garments
-
-Adapts to desktop and mobile screen sizes
-
+•	Fetches real-time weather data from the OpenWeather API.
+•	Displays the current temperature and weather conditions.
+•	Suggests clothing items based on the current weather.
+•	Allows users to add new clothing items.
+•	Opens and closes modals for adding garments.
+•	Adapts to desktop and mobile screen sizes.
 The goal of this project was to practice building a structured React application with reusable components, API integration, responsive design, and clean code organization.
-
 Functionality:
-
- Displays live temperature (°F)
-
-Shows weather condition (day/night support)
-
- Filters clothing items based on weather type
-
- “Add Clothes” modal form
-
- Modal open/close functionality
-
- Fully responsive design (Desktop & Mobile)
-
- Uses dynamic rendering with map() and filter()
-
+•	Displays live temperature (°F).
+•	Shows weather condition (day/night support).
+•	Filters clothing items based on weather type
+•	“Add Clothes” modal form.
+•	Modal open/close functionality
+•	Fully responsive design (Desktop & Mobile).
+•	Uses dynamic rendering with map() and filter().
  Technologies & Techniques Used:
-
 Frontend:
+•	React.js
+•	JSX
+•	CSS (BEM methodology)
+•	Responsive Design (Media Queries)
+•	Flexbox & CSS Grid
+•	JavaScript Concepts
+•	ES6 Modules
+•	Props
+•	State Management
+•	Conditional Rendering
+•	Array Methods (map(), filter())
+•	API Requests (Fetch)
+•	Component-based Architecture
+•	Tooling
+•	Vite
+•	Prettier (for code formatting)
+•	Git & GitHub
+•	GitHub Pages (for deployment)
 
-React.js
+Link: :https://wahid2025-fayeq.github.io/se_project_react/
 
-JSX
 
-CSS (BEM methodology)
-
-Responsive Design (Media Queries)
-
-Flexbox & CSS Grid
-
-JavaScript Concepts
-
-ES6 Modules
-
-Props
-
-State Management
-
-Conditional Rendering
-
-Array Methods (map(), filter())
-
-API Requests (Fetch)
-
-Component-based Architecture
-
-Tooling
-
-Vite
-
-Prettier (for code formatting)
-
-Git & GitHub
-
-GitHub Pages (for deployment)
-GitHub Link:https://wahid2025-fayeq.github.io/se_project_react/
