@@ -1,0 +1,155 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  visibility: hidden;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Cabinet Grotesk", sans-serif;
+  z-index: 1000;
+}
+.modal_opened {
+  visibility: visible;
+  display: flex;
+}
+
+.modal__content {
+  background-color: white;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+.modal__title {
+  margin: 0 0 24px;
+  line-height: 20px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+  z-index: 10;
+}
+
+.modal__close:hover {
+  opacity: 0.3;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+}
+.modal__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 6px;
+}
+.modal__input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 6px 0;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+}
+.modal__input::placeholder {
+  color: #00000080;
+}
+.modal__radio-buttons {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal__legend {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.modal__label_type_radio {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.modal__radio-input {
+  accent-color: #00000080;
+}
+.modal__submit {
+  margin: 28px 0 32px 36px;
+  align-self: flex-start;
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #0000004d;
+  color: #fff;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal__submit:disabled {
+  background-color: #e0e0e0;
+  color: #9b9b9b;
+  cursor: default;
+}
+
+@media screen and (max-width: 846px) {
+  .modal__content {
+    max-width: 100%;
+    margin-top: 456px;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .modal__title {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .modal__label {
+    font-size: 13px;
+  }
+
+  .modal__input {
+    font-size: 14px;
+  }
+
+  .modal__legend {
+    font-size: 14px;
+  }
+
+  .modal__submit {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+}

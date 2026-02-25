@@ -1,0 +1,42 @@
+.cards {
+  margin-top: 16px;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.cards__text {
+  margin: 16px 16px 12px;
+  font-size: 14px;
+}
+
+.cards__list {
+  margin: 40px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  list-style: none;
+  gap: 20px;
+}
+
+@media screen and (max-width: 846px) {
+  .cards {
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+
+  .cards__text {
+    margin: 7px 0;
+    font-size: 16px;
+  }
+
+  .cards__list {
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    gap: 15px;
+  }
+
+  .card,
+  .item-card {
+    width: 100%;
+    border-radius: 16px;
+  }
+}

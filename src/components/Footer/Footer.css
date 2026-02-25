@@ -1,0 +1,43 @@
+.footer {
+  padding: 0 0;
+  display: flex;
+  color: #000000;
+  margin-top: 24px;
+  margin-right: 40px;
+  font-size: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.footer__container {
+  background-color: #f3f3f3;
+  width: 100%;
+  max-width: 1358px;
+  padding: 20px 38px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 846px) {
+  .footer {
+    background-color: #f3f3f3;
+    padding: 0 0 16px;
+  }
+
+  .footer__container {
+    background-color: #ffffff;
+    margin: 0 16px;
+    border-radius: 12px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+
+  .footer__left,
+  .footer__right,
+  .footer__text {
+    margin: 0;
+  }
+}

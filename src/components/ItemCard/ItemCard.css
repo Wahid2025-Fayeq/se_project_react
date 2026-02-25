@@ -1,0 +1,32 @@
+.card {
+  width: 323px;
+  height: 326px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.card__name {
+  position: absolute;
+  top: 15px;
+  margin: 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  width: 73px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  text-align: center;
+  font-size: 16px;
+}
+.card__image {
+  width: 100%;
+  border: 1px;
+  border-radius: 19px;
+  background-color: #0000004d;
+  margin-left: 38px;
+}
+@media screen and (max-width: 846px) {
+  .card {
+    width: 100%;
+    gap: 15px;
+  }
+}

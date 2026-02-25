@@ -1,0 +1,168 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px auto;
+  background-color: #f3f3f3;
+  font-family: "Cabinet Grotesk", sans-serif;
+  width: 100%;
+  max-width: 1360px;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header__logo {
+  width: 89px;
+  font-size: 32px;
+  color: #000000;
+  line-height: 100%;
+}
+
+.header__date-location {
+  margin: 0;
+  font-size: 20px;
+  color: #000000;
+  line-height: 24px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header__add-button {
+  padding: 8px 16px;
+  border: none;
+  color: #000000;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.header__user {
+  display: flex;
+
+  align-items: center;
+  gap: 12px;
+}
+
+.header__username {
+  margin: 0;
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.header__avatar-image {
+  margin-right: 40px;
+  border: 1px;
+  border-radius: 50%;
+  color: #00000080;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__menu-button {
+  display: none;
+}
+
+@media screen and (max-width: 846px) {
+  .header {
+    width: 100%;
+    padding: 0;
+  }
+  .header__left {
+    flex-direction: column;
+    font-size: 32px;
+    line-height: 100%;
+    align-items: flex-start;
+    margin-top: 20px;
+    margin-left: 16px;
+    margin-bottom: 32px;
+  }
+
+  .header__date-location {
+    font-size: 20px;
+  }
+
+  .header__nav {
+    position: absolute;
+    top: 52px;
+    left: auto;
+    right: 16px;
+    margin: 0;
+    padding: 8px 12px;
+    min-width: 260px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 900;
+  }
+  .header__nav_mobile-open {
+    width: 100%;
+    height: 208px;
+    display: flex;
+    border: 1px;
+    color: #00000080;
+    padding: 8px 12px;
+    top: 18px;
+    border-radius: 10px;
+  }
+  .header__user {
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+    gap: 8px;
+    order: 1;
+  }
+  .header__username {
+    font-size: 20px;
+  }
+
+  .header__avatar-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .header__nav-close {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    align-self: flex-end;
+    padding: 0;
+  }
+
+  .header__add-button {
+    order: 2;
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .header__menu-button {
+    display: block;
+    border: none;
+    padding: 0;
+    font-size: 24px;
+    background: transparent;
+    cursor: pointer;
+    margin-left: 16px;
+    margin-bottom: 40px;
+  }
+}
