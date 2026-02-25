@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
-import { cordinates, APIkey } from "../../utils/constants";
+import {
+  coordinates,
+  apikey,
+  defaultClothingItems,
+} from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
+
 function App() {
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999 },
+    temp: { F: null },
     city: "",
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
-    getWeather(cordinates, APIkey)
+    getWeather(coordinates, apikey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         if (filteredData) {
@@ -34,9 +42,11 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -45,13 +55,19 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+          setClothingItems={setClothingItems}
+        />
         <Footer />
       </div>
+
       <ModalWithForm
         title="New garment"
         buttonText="Add garment"
-        activeModal={activeModal}
+        isOpen={activeModal === "add-garment"}
         onClose={closeActiveModal}
       >
         <label htmlFor="name" className="modal__label">
@@ -61,6 +77,7 @@ function App() {
             className="modal__input"
             id="name"
             placeholder="Name"
+            required
           />
         </label>
         <label htmlFor="imageUrl" className="modal__label">
@@ -82,7 +99,7 @@ function App() {
               value="hot"
               className="modal__radio-input"
             />
-            {""} Hot
+            Hot
           </label>
           <label
             htmlFor="warm"
@@ -95,7 +112,7 @@ function App() {
               value="warm"
               className="modal__radio-input"
             />
-            {""} Warm
+            Warm
           </label>
           <label
             htmlFor="cold"
@@ -108,10 +125,11 @@ function App() {
               value="cold"
               className="modal__radio-input"
             />
-            {""} Cold
+            Cold
           </label>
         </fieldset>
       </ModalWithForm>
+
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}

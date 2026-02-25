@@ -23,6 +23,7 @@
   border-radius: 19px;
   background-color: #0000004d;
   margin-left: 38px;
+  cursor: pointer;
 }
 @media screen and (max-width: 846px) {
   .card {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Header.css";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/Logo.svg";
 import avatar from "../../assets/avatar.svg";
 
 function Header({ weatherData, handleAddClick }) {
@@ -28,7 +28,7 @@ function Header({ weatherData, handleAddClick }) {
 
       <nav
         className={`header__nav ${
-          isMobileMenuOpened ? "header__nav_mobile-open" : "☰"
+          isMobileMenuOpened ? "header__nav_mobile-open" : ""
         }`}
       >
         {isMobileMenuOpened && (
