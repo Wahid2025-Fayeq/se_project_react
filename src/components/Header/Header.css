@@ -32,6 +32,7 @@
 .header__date-location {
   margin: 0;
   font-size: 20px;
+  font-weight: 700;
   color: #000000;
   line-height: 24px;
 }
@@ -63,6 +64,8 @@
   border: none;
   color: #000000;
   font-size: 20px;
+  font-weight: 700;
+  background-color: transparent;
   line-height: 24px;
   cursor: pointer;
 }
@@ -76,13 +79,14 @@
 
 .header__username {
   margin: 0;
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 700;
   line-height: 100%;
 }
 
 .header__avatar-image {
   margin: auto;
-  border: 1px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   color: #00000080;
   font-size: 14px;

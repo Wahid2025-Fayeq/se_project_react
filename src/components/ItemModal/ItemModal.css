@@ -42,6 +42,11 @@
 .modal__close:hover {
   opacity: 0.7;
 }
+.modal__close-icon {
+  width: 28px;
+  height: 28px;
+  stroke: #000000;
+}
 
 .modal__preview-image {
   width: 100%;

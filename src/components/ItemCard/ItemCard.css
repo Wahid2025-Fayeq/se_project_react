@@ -19,7 +19,7 @@
 }
 .card__image {
   width: 100%;
-  border: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 19px;
   background-color: #0000004d;
   margin: auto;
