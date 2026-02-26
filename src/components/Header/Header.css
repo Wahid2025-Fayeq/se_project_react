@@ -2,11 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 32px auto;
+  margin: 0 auto;
   background-color: #f3f3f3;
   font-family: "Cabinet Grotesk", sans-serif;
   width: 100%;
   max-width: 1360px;
+}
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 32px 0;
 }
 
 .header__left {
@@ -32,7 +39,23 @@
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
+}
+.header__nav-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  padding: 4px;
+}
+
+.header__nav-close-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #000000;
 }
 
 .header__add-button {
@@ -58,7 +81,7 @@
 }
 
 .header__avatar-image {
-  margin-right: 40px;
+  margin: auto;
   border: 1px;
   border-radius: 50%;
   color: #00000080;
@@ -114,7 +137,7 @@
     border: 1px;
     color: #00000080;
     padding: 8px 12px;
-    top: 18px;
+    margin: auto;
     border-radius: 10px;
   }
   .header__user {

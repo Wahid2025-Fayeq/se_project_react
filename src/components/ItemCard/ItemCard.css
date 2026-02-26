@@ -22,7 +22,7 @@
   border: 1px;
   border-radius: 19px;
   background-color: #0000004d;
-  margin-left: 38px;
+  margin: auto;
   cursor: pointer;
 }
 @media screen and (max-width: 846px) {

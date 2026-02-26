@@ -55,6 +55,11 @@
 .modal__close:hover {
   opacity: 0.3;
 }
+.modal__close-icon {
+  width: 24px;
+  height: 24px;
+  stroke: #000000;
+}
 
 .modal__form {
   display: flex;
@@ -105,7 +110,7 @@
   accent-color: #00000080;
 }
 .modal__submit {
-  margin: 28px 0 32px 36px;
+  margin: 0;
   align-self: flex-start;
   padding: 8px 16px;
   border-radius: 4px;
@@ -116,19 +121,21 @@
   font-size: 16px;
   cursor: pointer;
 }
+.modal__submit:hover {
+  opacity: 0.6;
+}
 
 .modal__submit:disabled {
   background-color: #e0e0e0;
   color: #9b9b9b;
-  cursor: default;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 846px) {
   .modal__content {
-    max-width: 100%;
+    width: 100%;
     margin-top: 456px;
     border-radius: 0;
-    padding: 0;
   }
 
   .modal__title {
@@ -151,5 +158,6 @@
   .modal__submit {
     font-size: 14px;
     padding: 8px 14px;
+    margin-left: 125px;
   }
 }
