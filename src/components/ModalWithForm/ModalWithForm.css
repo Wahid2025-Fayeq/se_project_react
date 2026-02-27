@@ -12,7 +12,7 @@
   font-family: "Cabinet Grotesk", sans-serif;
   z-index: 1000;
 }
-.modal_opened {
+.modal_is-opened {
   visibility: visible;
   display: flex;
 }
@@ -52,13 +52,14 @@
   z-index: 10;
 }
 
-.modal__close:hover {
-  opacity: 0.3;
-}
 .modal__close-icon {
-  width: 24px;
-  height: 24px;
-  stroke: #000000;
+  width: 14px;
+  height: 14px;
+  stroke: #0000004d;
+  cursor: pointer;
+}
+.modal__close-icon:hover {
+  opacity: 0.3;
 }
 
 .modal__form {
