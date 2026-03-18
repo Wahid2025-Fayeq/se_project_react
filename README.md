@@ -50,4 +50,9 @@ Frontend:
 Check out [this video](https://www.loom.com/share/e8f1ceea1cc8447fb644b3a1e5feff02), where I describe my
 project and some challenges I faced while building it.
 
+ ## Project Pitch Video
+ 
+ Check out [this video]((https://www.loom.com/share/e8f1ceea1cc8447fb644b3a1e5feff02)), where I describe my 
+ project and some challenges I faced while building it.
+
 Link: :https://wahid2025-fayeq.github.io/se_project_react/
