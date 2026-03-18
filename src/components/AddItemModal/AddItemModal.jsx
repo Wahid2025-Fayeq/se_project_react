@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useform";
-
+import { useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
@@ -10,11 +10,15 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   };
 
   const { values, handleChange, resetForm } = useForm(defaultValues);
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen, resetForm]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values);
-    resetForm();
   }
   return (
     <ModalWithForm
@@ -24,7 +28,6 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      {" "}
       <label htmlFor="name" className="modal__label">
         Name
         <input

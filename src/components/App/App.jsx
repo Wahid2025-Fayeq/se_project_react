@@ -7,7 +7,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
-import CurrentTemperatureUnitContext from "../contexts/CurrentTemperatureUnitContext";
+import CurrentTemperatureUnitContext from "../../utils/context/CurrentTemperatureUnitContext";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import { getItems, addItem, deleteItem } from "../../utils/api";
@@ -119,6 +119,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  onAddItemClick={handleAddClick}
                 />
               }
             />
