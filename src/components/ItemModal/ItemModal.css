@@ -55,19 +55,29 @@
 }
 
 .modal__preview-caption {
-  width: 100%;
-  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
   background-color: #ffffff;
   font-size: 20px;
 }
 
+.modal__delete-button {
+  border: none;
+  background: transparent;
+  color: #ff4d00;
+  cursor: pointer;
+  z-index: 20;
+  position: relative;
+  padding: 0;
+}
 .modal__item-name {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 700;
   color: #000000;
 }
-
 .modal__item-weather {
   margin: 0;
   font-size: 20px;

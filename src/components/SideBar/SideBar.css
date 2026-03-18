@@ -1,0 +1,78 @@
+.sidebar {
+  width: 229px;
+  flex-shrink: 0;
+}
+
+.sidebar__user {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.sidebar__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__username {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.sidebar__avatar-image {
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  display: block;
+}
+
+.sidebar__link_mobile {
+  display: none;
+}
+
+.sidebar__divider {
+  display: none;
+}
+
+@media screen and (max-width: 846px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .sidebar__divider {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 16px 0;
+  }
+
+  .sidebar__user {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .sidebar__username {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .sidebar__link_mobile {
+    display: block;
+    margin-top: 12px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-family: "Cabinet Grotesk", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+  }
+}
