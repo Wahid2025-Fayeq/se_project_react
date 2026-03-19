@@ -1,43 +1,61 @@
 .toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   width: 56px;
   height: 28px;
-  border: 2px solid black;
   border-radius: 20px;
-  color: #7e7e7e;
+  border: 2px solid #7e7e7e;
+  box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
-  position: relative;
 }
+
 .toggle-switch__checkbox {
   opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
-.toggle-switch__circle {
-  background-color: black;
+
+.toggle-switch__slider {
+  position: absolute;
   width: 28px;
   height: 28px;
-  position: absolute;
   border-radius: 50%;
-  left: 0;
-  transform: all 0.2s;
+  background-color: #000;
+  transition: transform 0.3s ease;
+  z-index: 1;
 }
+
+.toggle-switch__checkbox:checked + .toggle-switch__slider {
+  transform: translateX(28px);
+}
+
 .toggle-switch__text {
   position: absolute;
-  color: gray;
-  top: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
   font-family: "Cabinet Grotesk", sans-serif;
   font-weight: 700;
-  line-height: 100%;
+  line-height: 1;
+  color: #7e7e7e;
+  z-index: 2;
+  transition: color 0.3s ease;
+  pointer-events: none;
 }
+
 .toggle-switch__text_F {
-  left: 10px;
-  font-size: 14px;
+  left: 9px;
 }
+
 .toggle-switch__text_C {
-  right: 10px;
-  font-size: 14px;
+  right: 9px;
 }
-.toggle-switch__checkbox:checked ~ .toggle-switch__circle {
-  left: 28px;
+
+.toggle-switch__text_active {
+  color: #fff;
 }
 @media screen and (max-width: 846px) {
   .toggle-switch {

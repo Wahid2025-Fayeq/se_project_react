@@ -3,7 +3,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-const handleServerResponse = (res) => {
+export const handleServerResponse = (res) => {
   if (!res.ok) {
     return Promise.reject(`Error: ${res.status}`);
   }
@@ -24,10 +24,9 @@ export const addItem = ({ name, imageUrl, weather }) => {
   }).then(handleServerResponse);
 };
 
-export const deleteItem = async (id) => {
-  const res = await fetch(`${baseUrl}/items/${id}`, {
+export const deleteItem = (id) => {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers,
-  });
-  return handleServerResponse(res);
+  }).then(handleServerResponse);
 };

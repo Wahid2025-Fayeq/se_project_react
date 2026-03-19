@@ -34,10 +34,11 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemSubmit = ({ name, imageUrl, weather }, resetForm) => {
     addItem({ name, imageUrl, weather })
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
+        resetForm();
         closeActiveModal();
       })
       .catch((err) => {
@@ -56,7 +57,8 @@ function App() {
       .catch((err) => {
         console.error("Weather fetch error:", err);
       });
-
+  }, []);
+  useEffect(() => {
     getItems()
       .then((data) => {
         const items = Array.isArray(data) ? data : data.items || [];
