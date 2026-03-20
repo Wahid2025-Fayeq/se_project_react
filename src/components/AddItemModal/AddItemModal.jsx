@@ -1,18 +1,37 @@
-import { useForm } from "../../hooks/useform";
+import { useState } from "react";
+import { useFormWithValidation } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedErrors, setSubmittedErrors] = useState({});
   const defaultValues = {
     name: "",
     imageUrl: "",
     weather: "",
   };
 
-  const { values, handleChange, resetForm } = useForm(defaultValues);
+  const {
+    values,
+    errors,
+    isValid,
+    handleChange,
+    resetForm,
+    validateAllFields,
+  } = useFormWithValidation(defaultValues);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddItem(values, resetForm);
+    const validationErrors = validateAllFields();
+    setSubmittedErrors(validationErrors);
+    setIsSubmitted(true);
+    const hasErrors = Object.values(validationErrors).some((err) => err !== "");
+    if (!hasErrors) {
+      onAddItem(values, resetForm);
+      setIsSubmitted(false);
+      setSubmittedErrors({});
+      resetForm();
+    }
   }
   return (
     <ModalWithForm
@@ -27,28 +46,34 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
         <input
           type="text"
           name="name"
-          className="modal__input"
+          className={`modal__input ${submittedErrors.name || errors.name ? "modal__input_with-error" : ""}`}
           id="name"
           placeholder="Name"
-          required
-          minLength="1"
-          maxLength="30"
           value={values.name}
           onChange={handleChange}
         />
+        {(submittedErrors.name || errors.name) && (
+          <span className="modal__error">
+            {submittedErrors.name || errors.name}
+          </span>
+        )}
       </label>
       <label htmlFor="imageUrl" className="modal__label">
         Image
         <input
-          type="url"
-          className="modal__input"
+          type="text"
+          className={`modal__input ${submittedErrors.imageUrl || errors.imageUrl ? "modal__input_with-error" : ""}`}
           id="imageUrl"
           name="imageUrl"
           placeholder="Image URL"
-          required
           value={values.imageUrl}
           onChange={handleChange}
         />
+        {(submittedErrors.imageUrl || errors.imageUrl) && (
+          <span className="modal__error">
+            {submittedErrors.imageUrl || errors.imageUrl}
+          </span>
+        )}
       </label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type</legend>
@@ -88,6 +113,11 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           />
           Cold
         </label>
+        {(submittedErrors.weather || errors.weather) && (
+          <span className="modal__error">
+            {submittedErrors.weather || errors.weather}
+          </span>
+        )}
       </fieldset>
     </ModalWithForm>
   );

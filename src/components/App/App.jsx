@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { coordinates, apikey } from "../../utils/constants";
+import { apikey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -25,6 +25,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [userCoordinates, setUserCoordinates] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -47,7 +48,35 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, apikey)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserCoordinates({ latitude, longitude });
+        },
+        (error) => {
+          console.error("Geolocation error:", error.message);
+
+          setUserCoordinates({
+            latitude: 38.658707,
+            longitude: -77.257919,
+          });
+        },
+      );
+    } else {
+      console.warn("Geolocation is not supported by this browser.");
+
+      setUserCoordinates({
+        latitude: 38.658707,
+        longitude: -77.257919,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!userCoordinates) return;
+
+    getWeather(userCoordinates, apikey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         if (filteredData) {
@@ -57,7 +86,7 @@ function App() {
       .catch((err) => {
         console.error("Weather fetch error:", err);
       });
-  }, []);
+  }, [userCoordinates]);
   useEffect(() => {
     getItems()
       .then((data) => {
