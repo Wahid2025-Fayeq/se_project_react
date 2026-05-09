@@ -57,28 +57,3 @@
     font-size: 16px;
   }
 }
-@media screen and (max-width: 846px) {
-  .clothes-section {
-    margin-left: 0;
-  }
-
-  .clothes-section__row {
-    align-items: flex-start;
-    margin-bottom: 12px;
-  }
-
-  .clothes-section__title {
-    font-size: 18px;
-  }
-
-  .clothes-section__button {
-    margin-left: 0;
-    padding: 0;
-    font-size: 14px;
-  }
-
-  .clothes-section__items {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-  }
-}

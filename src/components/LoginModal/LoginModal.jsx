@@ -70,10 +70,6 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
         />
       </label>
 
-      {loginError && (
-        <p className="modal__error-message">Incorrect email or password</p>
-      )}
-
       <label className="modal__label">
         Password
         <input
@@ -86,6 +82,9 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           required
         />
       </label>
+      {loginError && (
+        <p className="modal__error-message">Incorrect email or password</p>
+      )}
     </ModalWithForm>
   );
 }

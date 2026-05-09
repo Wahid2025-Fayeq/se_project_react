@@ -52,4 +52,4 @@ project and some challenges I faced while building it.
 
 Link:https://wahid2025-fayeq.github.io/se_project_react/
 
-Backend Link:https://wahid2025-fayeq.github.io/se_project_express/
+Backend Link:https://github.com/Wahid2025-Fayeq/se_project_express

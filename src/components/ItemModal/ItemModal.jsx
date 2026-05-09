@@ -9,7 +9,7 @@ function ItemModal({ activeModal, card, onClose, onDeleteClick }) {
 
   if (!isOpen || !card || !card.imageUrl) return null;
 
-  const isOwner = card.owner === currentUser?.id;
+  const isOwner = card.owner === currentUser?._id;
 
   return (
     <div className="modal modal_is-opened">

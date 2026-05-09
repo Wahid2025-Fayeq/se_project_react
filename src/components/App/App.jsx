@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./App.css";
 
-import { apikey } from "../../utils/constants";
+import { apiKey } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import {
@@ -37,7 +37,6 @@ function App() {
     condition: "",
     isDay: false,
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
@@ -214,7 +213,7 @@ function App() {
   useEffect(() => {
     if (!userCoordinates) return;
 
-    getWeather(userCoordinates, apikey)
+    getWeather(userCoordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
 

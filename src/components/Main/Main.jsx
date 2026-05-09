@@ -34,7 +34,7 @@ function Main({
             <ItemCard
               key={item._id}
               item={item}
-              onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
               onCardClick={onCardClick}
             />
           ))}

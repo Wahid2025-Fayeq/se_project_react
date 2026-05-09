@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFormWithValidation } from "../../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useform";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
@@ -11,14 +11,8 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     weather: "",
   };
 
-  const {
-    values,
-    errors,
-    isValid,
-    handleChange,
-    resetForm,
-    validateAllFields,
-  } = useFormWithValidation(defaultValues);
+  const { values, errors, handleChange, resetForm, validateAllFields } =
+    useFormWithValidation(defaultValues);
 
   function handleSubmit(evt) {
     evt.preventDefault();
