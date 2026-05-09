@@ -9,6 +9,29 @@
   border-radius: 19px;
   overflow: hidden;
 }
+.card__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.card__like-button {
+  width: 18px;
+  height: 15px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 0.4;
+  background-image: url("../../assets/like.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.card__like-button_active {
+  opacity: 1;
+}
 .card__name {
   position: absolute;
   top: 15px;

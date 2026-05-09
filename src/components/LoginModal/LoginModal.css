@@ -1,0 +1,13 @@
+.modal__input.modal__input_error {
+  border-bottom: 1px solid red;
+  color: red;
+}
+
+.modal__error-message {
+  color: red;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+.modal__input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}

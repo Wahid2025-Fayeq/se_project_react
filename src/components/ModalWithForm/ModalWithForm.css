@@ -126,9 +126,14 @@
   margin-top: 8px;
 }
 
+.modal__buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
 .modal__submit {
   margin: 0;
-  align-self: flex-start;
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
@@ -136,10 +141,34 @@
   color: #fff;
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 16px;
-  cursor: pointer;
+  cursor: not-allowed;
+  transition:
+    background-color 0.2s ease,
+    color 0.3s ease;
 }
 .modal__submit:hover {
   opacity: 0.6;
+}
+
+.modal__submit.modal__submit_active {
+  background-color: #000;
+  cursor: pointer;
+  opacity: 1;
+}
+.modal__switch-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+
+  color: #000;
+  opacity: 0.5;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+}
+
+.modal__switch-btn:hover {
+  opacity: 1;
 }
 
 .modal__submit:disabled {

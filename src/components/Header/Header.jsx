@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Header.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import logo from "../../assets/Logo.svg";
-import avatar from "../../assets/avatar.svg";
 import closeIcon from "../../assets/closeIcon.svg";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { NavLink } from "react-router-dom";
 import menuIcon from "../../assets/menuIcon.png";
-function Header({ weatherData, handleAddClick }) {
+
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
+import { NavLink } from "react-router-dom";
+
+function Header({
+  weatherData,
+  handleAddClick,
+  onRegisterClick,
+  onLoginClick,
+  isLoggedIn,
+}) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpened((prev) => !prev);
@@ -27,6 +37,7 @@ function Header({ weatherData, handleAddClick }) {
           <NavLink to="/">
             <img src={logo} alt="WTWR logo" className="header__logo" />
           </NavLink>
+
           <p className="header__date-location">
             {currentDate}, {city}
           </p>
@@ -53,25 +64,55 @@ function Header({ weatherData, handleAddClick }) {
             </button>
           )}
 
-          <button
-            type="button"
-            className="header__add-button"
-            onClick={handleAddClick}
-          >
-            + Add clothes
-          </button>
+          {isLoggedIn ? (
+            <>
+              <button
+                type="button"
+                className="header__add-button"
+                onClick={handleAddClick}
+              >
+                + Add clothes
+              </button>
 
-          <NavLink to="/profile" className="header__profile-link">
-            <div className="header__user">
-              <p className="header__username">Terrence Tegegne</p>
-              
-              <img
-                src={avatar}
-                alt="User avatar"
-                className="header__avatar-image"
-              />
+              <NavLink to="/profile" className="header__profile-link">
+                <div className="header__user">
+                  <p className="header__username">
+                    {currentUser?.name || "User"}
+                  </p>
+
+                  {currentUser?.avatar ? (
+                    <img
+                      src={currentUser.avatar}
+                      alt="User avatar"
+                      className="header__avatar-image"
+                    />
+                  ) : (
+                    <div className="header__avatar-placeholder">
+                      {currentUser?.name?.charAt(0).toUpperCase() || "U"}
+                    </div>
+                  )}
+                </div>
+              </NavLink>
+            </>
+          ) : (
+            <div className="header__auth-buttons">
+              <button
+                type="button"
+                className="header__signup-btn"
+                onClick={onRegisterClick}
+              >
+                Sign Up
+              </button>
+
+              <button
+                type="button"
+                className="header__login-btn"
+                onClick={onLoginClick}
+              >
+                Log In
+              </button>
             </div>
-          </NavLink>
+          )}
         </nav>
       </div>
 
