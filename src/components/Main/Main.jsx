@@ -8,7 +8,8 @@ function Main({
   weatherData,
   clothingItems = [],
   handleCardClick,
-  onCardClick,
+  handleCardLike,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -35,7 +36,8 @@ function Main({
               key={item._id}
               item={item}
               onCardLike={handleCardLike}
-              onCardClick={onCardClick}
+              onCardClick={handleCardClick}
+              isLoggedIn={isLoggedIn}
             />
           ))}
         </ul>
