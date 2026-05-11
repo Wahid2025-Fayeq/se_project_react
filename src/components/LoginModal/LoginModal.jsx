@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useForm } from "../../hooks/useform";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./LoginModal.css";
 
 function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
-  const [formData, setFormData] = useState({
+  const { values, handleChange, resetForm } = useForm({
     email: "",
     password: "",
   });
@@ -12,24 +13,16 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
 
   useEffect(() => {
     if (!isOpen) {
-      setFormData({
-        email: "",
-        password: "",
-      });
+      resetForm();
       setLoginError(false);
     }
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   const isFormValid =
-    formData.email.trim() !== "" && formData.password.trim() !== "";
+    values.email.trim() !== "" && values.password.trim() !== "";
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleInputChange = (e) => {
+    handleChange(e);
 
     setLoginError(false);
   };
@@ -37,7 +30,7 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onLogin(formData)
+    onLogin(values)
       .then(() => {
         setLoginError(false);
       })
@@ -64,8 +57,8 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
+          value={values.email}
+          onChange={handleInputChange}
           required
         />
       </label>
@@ -77,8 +70,8 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
+          value={values.password}
+          onChange={handleInputChange}
           required
         />
       </label>

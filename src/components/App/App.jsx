@@ -14,7 +14,7 @@ import {
   addCardLike,
   removeCardLike,
 } from "../../utils/api";
-import EditProfileModal from "../EditProfileModal/EditProfileModalm.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 import * as auth from "../../utils/auth";
 
 import Header from "../Header/Header";
@@ -278,6 +278,7 @@ function App() {
                       onEditProfileClick={handleEditProfieleClick}
                       onLogout={handleLogout}
                       onCardLike={handleCardLike}
+                      isLoggedIn={isLoggedIn}
                     />
                   </ProtectedRoute>
                 }

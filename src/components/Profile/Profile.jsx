@@ -9,6 +9,7 @@ export default function Profile({
   onEditProfileClick,
   onLogout,
   onCardLike,
+  isLoggedIn,
 }) {
   return (
     <section className="profile">
@@ -18,6 +19,7 @@ export default function Profile({
         clothingItems={clothingItems}
         onAddItemClick={onAddItemClick}
         onCardLike={onCardLike}
+        isLoggedIn={isLoggedIn}
       />
     </section>
   );

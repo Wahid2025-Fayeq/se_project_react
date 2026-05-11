@@ -10,6 +10,11 @@
   overflow: hidden;
 }
 .card__header {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,12 +36,9 @@
 
 .card__like-button_active {
   opacity: 1;
+  background-image: url("../../assets/like-active.svg");
 }
 .card__name {
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
   margin: 0;
   padding: 2px 12px;
   background-color: #ffffff;
@@ -45,7 +47,6 @@
   font-weight: 700;
   text-align: center;
   font-size: 16px;
-  z-index: 2;
   width: fit-content;
   max-width: 90%;
   white-space: nowrap;

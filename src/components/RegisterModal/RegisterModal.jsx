@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useForm } from "../../hooks/useform";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
-  const [formData, setFormData] = useState({
+  const { values, handleChange, resetForm } = useForm({
     email: "",
     password: "",
     name: "",
@@ -11,29 +12,19 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
 
   useEffect(() => {
     if (!isOpen) {
-      setFormData({
-        email: "",
-        password: "",
-        name: "",
-        avatar: "",
-      });
+      resetForm();
     }
-  }, [isOpen]);
+  }, [isOpen, resetForm]);
 
   const isFormValid =
-    formData.email.trim() !== "" &&
-    formData.password.trim() !== "" &&
-    formData.name.trim() !== "" &&
-    formData.avatar.trim() !== "";
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+    values.email.trim() !== "" &&
+    values.password.trim() !== "" &&
+    values.name.trim() !== "" &&
+    values.avatar.trim() !== "";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister(formData);
+    onRegister(values);
   };
 
   return (
@@ -54,7 +45,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           type="email"
           name="email"
           placeholder="Email"
-          value={formData.email}
+          value={values.email}
           onChange={handleChange}
           required
         />
@@ -67,7 +58,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           type="password"
           name="password"
           placeholder="Password"
-          value={formData.password}
+          value={values.password}
           onChange={handleChange}
           required
         />
@@ -80,7 +71,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           type="text"
           name="name"
           placeholder="Name"
-          value={formData.name}
+          value={values.name}
           onChange={handleChange}
           required
         />
@@ -93,7 +84,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           type="url"
           name="avatar"
           placeholder="Avatar URL"
-          value={formData.avatar}
+          value={values.avatar}
           onChange={handleChange}
           required
         />
