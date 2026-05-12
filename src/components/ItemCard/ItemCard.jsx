@@ -5,12 +5,13 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const isLiked = item.likes.some((id) => id === currentUser?._id);
+  const isLiked = item.likes.some(
+    (like) => like === currentUser?._id || like._id === currentUser?._id,
+  );
 
-  const itemLikeButtonClassName = `
-    card__like-button
-    ${isLiked ? "card__like-button_active" : ""}
-  `;
+  const itemLikeButtonClassName = `card__like-button ${
+    isLiked ? "card__like-button_active" : ""
+  }`;
 
   const handleCardClick = () => {
     onCardClick(item);
@@ -20,7 +21,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
     if (!isLoggedIn || !onCardLike) return;
 
     onCardLike({
-      _id: item._id,
+      item,
       isLiked,
     });
   };
@@ -35,9 +36,7 @@ function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {
             type="button"
             className={itemLikeButtonClassName}
             onClick={handleLike}
-          >
-            ♥
-          </button>
+          ></button>
         )}
       </div>
 

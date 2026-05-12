@@ -80,11 +80,15 @@ function Header({
                     {currentUser?.name || "User"}
                   </p>
 
-                  {currentUser?.avatar ? (
+                  {currentUser?.avatar || currentUser?.avatarUrl ? (
                     <img
-                      src={currentUser.avatar}
+                      src={currentUser.avatar || currentUser.avatarUrl}
                       alt="User avatar"
                       className="header__avatar-image"
+                      onError={(e) => {
+                        e.currentTarget.src = "";
+                        e.currentTarget.style.display = "none";
+                      }}
                     />
                   ) : (
                     <div className="header__avatar-placeholder">

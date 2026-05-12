@@ -1,46 +1,41 @@
 import { useContext } from "react";
 import "./ItemModal.css";
-import closeIcon from "../../assets/closeIcon.svg";
+import Modal from "../Modal/Modal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, card, onClose, onDeleteClick }) {
   const isOpen = activeModal === "preview";
+
   const currentUser = useContext(CurrentUserContext);
 
   if (!isOpen || !card || !card.imageUrl) return null;
 
-  const isOwner = card.owner === currentUser?._id;
+  const isOwner =
+    card.owner === currentUser?._id || card.owner?._id === currentUser?._id;
 
   return (
-    <div className="modal modal_is-opened">
-      <div className="modal__preview">
-        <button type="button" className="modal__close" onClick={onClose}>
-          <img src={closeIcon} alt="Close" className="modal__close-icon" />
-        </button>
+    <Modal name="preview" isOpen={isOpen} onClose={onClose}>
+      <div className="modal__image-container">
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
 
-        <img
-          src={card.imageUrl}
-          alt={card.name}
-          className="modal__preview-image"
-        />
-
-        <div className="modal__preview-caption">
+        <div className="modal__footer">
           <div>
-            <h2 className="modal__item-name">{card.name}</h2>
-            <p className="modal__item-weather">Weather: {card.weather}</p>
+            <p className="modal__caption">{card.name}</p>
+            <p className="modal__weather">Weather: {card.weather}</p>
           </div>
+
           {isOwner && (
             <button
               type="button"
-              className="modal__delete-button"
-              onClick={onDeleteClick}
+              className="modal__delete-btn"
+              onClick={() => onDeleteClick(card)}
             >
               Delete item
             </button>
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 }
 

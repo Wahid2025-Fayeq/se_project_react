@@ -16,15 +16,16 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+
     const validationErrors = validateAllFields();
     setSubmittedErrors(validationErrors);
     setIsSubmitted(true);
+
     const hasErrors = Object.values(validationErrors).some((err) => err !== "");
     if (!hasErrors) {
       onAddItem(values, resetForm);
       setIsSubmitted(false);
       setSubmittedErrors({});
-      resetForm();
     }
   }
   return (

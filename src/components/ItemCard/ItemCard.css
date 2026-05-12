@@ -27,16 +27,15 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  opacity: 0.4;
-  background-image: url("../../assets/like.svg");
+  opacity: 1;
+  background-image: url("../../assets/like-active.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
 .card__like-button_active {
-  opacity: 1;
-  background-image: url("../../assets/like-active.svg");
+  background-image: url("../../assets/like.svg");
 }
 .card__name {
   margin: 0;

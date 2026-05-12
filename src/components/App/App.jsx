@@ -84,25 +84,21 @@ function App() {
     });
   };
 
-  const handleCardLike = ({ _id, isLiked }) => {
+  const handleCardLike = ({ item, isLiked }) => {
     const token = localStorage.getItem("jwt");
 
+    const updateItems = (updatedItem) => {
+      setClothingItems((items) =>
+        items.map((card) =>
+          card._id === updatedItem._id ? updatedItem : card,
+        ),
+      );
+    };
+
     if (!isLiked) {
-      addCardLike(_id, token)
-        .then((updatedItem) => {
-          setClothingItems((items) =>
-            items.map((item) => (item._id === _id ? updatedItem : item)),
-          );
-        })
-        .catch(console.error);
+      addCardLike(item._id, token).then(updateItems).catch(console.error);
     } else {
-      removeCardLike(_id, token)
-        .then((updatedItem) => {
-          setClothingItems((items) =>
-            items.map((item) => (item._id === _id ? updatedItem : item)),
-          );
-        })
-        .catch(console.error);
+      removeCardLike(item._id, token).then(updateItems).catch(console.error);
     }
   };
 
@@ -121,6 +117,7 @@ function App() {
       })
       .catch(console.error);
   };
+
   const handleUpdateUser = ({ name, avatar }, resetForm) => {
     const token = localStorage.getItem("jwt");
 
@@ -315,6 +312,7 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegister={handleRegister}
+            onLoginClick={handleLoginClick}
           />
 
           <LoginModal

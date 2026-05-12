@@ -14,7 +14,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
     if (!isOpen) {
       resetForm();
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen]);
 
   const isFormValid =
     values.email.trim() !== "" &&
@@ -29,6 +29,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
 
   return (
     <ModalWithForm
+    name="register"
       title="Sign Up"
       buttonText="Next"
       isOpen={isOpen}

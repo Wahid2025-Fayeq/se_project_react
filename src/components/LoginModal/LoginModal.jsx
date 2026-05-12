@@ -16,7 +16,7 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
       resetForm();
       setLoginError(false);
     }
-  }, [isOpen, resetForm]);
+  }, [isOpen]);
 
   const isFormValid =
     values.email.trim() !== "" && values.password.trim() !== "";
@@ -41,6 +41,7 @@ function LoginModal({ isOpen, onClose, onLogin, onRegisterClick }) {
 
   return (
     <ModalWithForm
+      name="login"
       title="Log In"
       buttonText="Log In"
       isOpen={isOpen}
