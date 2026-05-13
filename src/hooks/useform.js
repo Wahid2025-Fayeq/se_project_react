@@ -11,8 +11,8 @@ export function useForm(initialValues) {
       [name]: value,
     });
   };
-  const resetForm = () => {
-    setValues(initialValues);
+  const resetForm = (newValues = {}) => {
+    setValues({ ...initialValues, ...newValues });
   };
   return { values, resetForm, handleChange };
 }

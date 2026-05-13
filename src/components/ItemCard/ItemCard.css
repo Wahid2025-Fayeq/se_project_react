@@ -28,14 +28,14 @@
   background-color: transparent;
   cursor: pointer;
   opacity: 1;
-  background-image: url("../../assets/like-active.svg");
+  background-image: url("../../assets/like.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 
 .card__like-button_active {
-  background-image: url("../../assets/like.svg");
+  background-image: url("../../assets/like-active.svg");
 }
 .card__name {
   margin: 0;

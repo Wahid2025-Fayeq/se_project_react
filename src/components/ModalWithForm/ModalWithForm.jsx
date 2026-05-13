@@ -25,7 +25,7 @@ function ModalWithForm({
           <button
             type="submit"
             className={`modal__submit ${
-              isFormValid ? "modal__submit_active" : ""
+              isFormValid ? "modal__submit_disabled" : ""
             }`}
             disabled={!isFormValid}
           >

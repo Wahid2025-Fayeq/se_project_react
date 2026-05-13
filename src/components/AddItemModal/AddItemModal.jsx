@@ -5,14 +5,21 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedErrors, setSubmittedErrors] = useState({});
+
   const defaultValues = {
     name: "",
     imageUrl: "",
     weather: "",
   };
 
-  const { values, errors, handleChange, resetForm, validateAllFields } =
-    useFormWithValidation(defaultValues);
+  const {
+    values,
+    errors,
+    handleChange,
+    isValid,
+    resetForm,
+    validateAllFields,
+  } = useFormWithValidation(defaultValues);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -35,6 +42,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isFormValid={isValid}
     >
       <label htmlFor="name" className="modal__label">
         Name
@@ -46,6 +54,9 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           placeholder="Name"
           value={values.name}
           onChange={handleChange}
+          required
+          minLength="2"
+          maxLength="30"
         />
         {(submittedErrors.name || errors.name) && (
           <span className="modal__error">
@@ -56,13 +67,14 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
       <label htmlFor="imageUrl" className="modal__label">
         Image
         <input
-          type="text"
+          type="url"
           className={`modal__input ${submittedErrors.imageUrl || errors.imageUrl ? "modal__input_with-error" : ""}`}
           id="imageUrl"
           name="imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}
           onChange={handleChange}
+          required
         />
         {(submittedErrors.imageUrl || errors.imageUrl) && (
           <span className="modal__error">
@@ -81,6 +93,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
             className="modal__radio-input"
             checked={values.weather === "hot"}
             onChange={handleChange}
+            required
           />
           Hot
         </label>

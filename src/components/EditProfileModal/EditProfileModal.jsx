@@ -18,12 +18,13 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
         avatar: currentUser.avatar || "",
       });
     }
-  }, [isOpen, currentUser, resetForm]);
+  }, [isOpen, currentUser]);
 
   const isFormValid = values.name.trim() !== "" && values.avatar.trim() !== "";
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     onUpdateUser(values);
   };
 

@@ -43,8 +43,7 @@ function App() {
   const [userCoordinates, setUserCoordinates] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
-    _id: "user-id-1",
-    name: "Wahid",
+    name: "",
     avatar: "",
   });
   const [activeModal, setActiveModal] = useState("");
@@ -76,12 +75,22 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    return auth.login({ email, password }).then((res) => {
-      localStorage.setItem("jwt", res.token);
-      setIsLoggedIn(true);
-      setCurrentUser(res.user);
-      closeActiveModal();
-    });
+    return auth
+      .login({ email, password })
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+
+        return auth.checkToken(res.token);
+      })
+      .then((userData) => {
+        setIsLoggedIn(true);
+        setCurrentUser(userData);
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error(err);
+        localStorage.removeItem("jwt");
+      });
   };
 
   const handleCardLike = ({ item, isLiked }) => {
@@ -118,13 +127,12 @@ function App() {
       .catch(console.error);
   };
 
-  const handleUpdateUser = ({ name, avatar }, resetForm) => {
+  const handleUpdateUser = ({ name, avatar }) => {
     const token = localStorage.getItem("jwt");
 
     updateUser({ name, avatar }, token)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
-
         closeActiveModal();
       })
       .catch(console.error);
