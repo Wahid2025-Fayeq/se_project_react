@@ -6,16 +6,20 @@
   overflow: hidden;
   margin: 0 auto;
 }
+
 .weather-card__temp {
   font-size: 36px;
   line-height: 40px;
   margin: auto;
   position: absolute;
+  color: white;
+  text-shadow: none;
   top: 20px;
   left: 16px;
 }
 .weather-card__image {
   object-fit: cover;
+  display: block;
   object-position: right top;
   width: 100%;
 }

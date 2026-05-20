@@ -1,5 +1,7 @@
-const BASE_URL = "http://localhost:3001";
-
+const BASE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://api.mine.bz.jumpingcrab.com"
+    : "http://localhost:3001";
 const headers = {
   "Content-Type": "application/json",
 };
