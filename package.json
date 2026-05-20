@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && scp -r ./dist/* wahid_fayeq2024@mine.bz.jumpingcrab.com:/home/wahid_fayeq2024/frontend"
   },
   "dependencies": {
     "react": "^18.3.1",
