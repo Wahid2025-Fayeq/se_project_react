@@ -7,7 +7,12 @@ const headers = {
 };
 
 const checkResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  if (res.ok) {
+    return res.json();
+  }
+  return res.json().then((err) => {
+    return Promise.reject(err.message || `Error: ${res.status}`);
+  });
 };
 
 export { checkResponse };
