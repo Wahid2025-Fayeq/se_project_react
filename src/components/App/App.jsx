@@ -50,16 +50,19 @@ function App() {
   const [authError, setAuthError] = useState("");
 
   const handleRegisterClick = () => {
+    setAuthError("");
     setActiveModal("register");
   };
   const handleEditProfieleClick = () => {
     setActiveModal("edit-profile");
   };
   const handleLoginClick = () => {
+    setAuthError("");
     setActiveModal("login");
   };
 
   const closeActiveModal = () => {
+    setAuthError("");
     setActiveModal("");
   };
 
