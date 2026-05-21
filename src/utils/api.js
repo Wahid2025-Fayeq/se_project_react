@@ -10,6 +10,7 @@ const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
+
   return res.json().then((err) => {
     return Promise.reject(err.message || `Error: ${res.status}`);
   });

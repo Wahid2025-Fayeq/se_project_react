@@ -2,7 +2,13 @@ import { useEffect } from "react";
 import { useForm } from "../../hooks/useform";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
+function RegisterModal({
+  isOpen,
+  onClose,
+  onRegister,
+  onLoginClick,
+  errorMessage,
+}) {
   const { values, handleChange, resetForm } = useForm({
     email: "",
     password: "",
@@ -29,7 +35,7 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
 
   return (
     <ModalWithForm
-    name="register"
+      name="register"
       title="Sign Up"
       buttonText="Next"
       isOpen={isOpen}
@@ -90,6 +96,13 @@ function RegisterModal({ isOpen, onClose, onRegister, onLoginClick }) {
           required
         />
       </label>
+      {errorMessage && (
+        <p className="modal__error-message">
+          {errorMessage === "Error: 409"
+            ? "Email already exists"
+            : errorMessage}
+        </p>
+      )}
     </ModalWithForm>
   );
 }

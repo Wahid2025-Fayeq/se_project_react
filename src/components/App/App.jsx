@@ -47,6 +47,7 @@ function App() {
     avatar: "",
   });
   const [activeModal, setActiveModal] = useState("");
+  const [authError, setAuthError] = useState("");
 
   const handleRegisterClick = () => {
     setActiveModal("register");
@@ -63,6 +64,8 @@ function App() {
   };
 
   const handleRegister = ({ name, avatar, email, password }) => {
+    setAuthError("");
+
     auth
       .register({ name, avatar, email, password })
       .then(() => {
@@ -71,10 +74,14 @@ function App() {
       .then(() => {
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        setAuthError(err);
+      });
   };
 
   const handleLogin = ({ email, password }) => {
+    setAuthError("");
+
     return auth
       .login({ email, password })
       .then((res) => {
@@ -88,8 +95,9 @@ function App() {
         closeActiveModal();
       })
       .catch((err) => {
-        console.error(err);
+        setAuthError(err);
         localStorage.removeItem("jwt");
+        return Promise.reject(err);
       });
   };
 
@@ -321,6 +329,7 @@ function App() {
             onClose={closeActiveModal}
             onRegister={handleRegister}
             onLoginClick={handleLoginClick}
+            errorMessage={authError}
           />
 
           <LoginModal
@@ -328,6 +337,7 @@ function App() {
             onClose={closeActiveModal}
             onLogin={handleLogin}
             onRegisterClick={handleRegisterClick}
+            errorMessage={authError}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>
