@@ -20,7 +20,7 @@
 .weather-card__image {
   object-fit: cover;
   display: block;
-  object-position: right top;
+  object-position: right center;
   width: 100%;
 }
 
@@ -31,13 +31,12 @@
   }
 
   .weather-card__temp {
-    width: 340px;
     font-size: 36px;
     left: 16px;
     line-height: 100%;
   }
 
   .weather-card__image {
-    object-position: center;
+    object-position: right center;
   }
 }

@@ -152,17 +152,25 @@
     width: 100%;
     padding: 0;
   }
-  .header__left {
-    font-size: 32px;
-    line-height: 100%;
 
-    margin-top: 20px;
-    margin-left: 16px;
-    margin-bottom: 32px;
+  .header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .header__left {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 0;
   }
 
   .header__date-location {
     font-size: 20px;
+    line-height: 20px;
+    margin: 0;
   }
 
   .header__nav {
@@ -208,6 +216,11 @@
     border-radius: 50%;
     object-fit: cover;
   }
+  .header__logo {
+    position: relative;
+    font-size: 32px;
+    left: -42px;
+  }
 
   .header__nav-close {
     border: none;
@@ -236,12 +249,11 @@
     font-size: 24px;
     background: transparent;
     cursor: pointer;
-    margin-left: 16px;
-    margin-bottom: 40px;
+    margin: 0;
   }
 }
 .header__menu-icon {
   width: 44px;
   height: 44px;
-  margin-top: 18px;
+  margin-bottom: 30px;
 }
